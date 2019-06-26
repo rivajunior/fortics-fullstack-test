@@ -63,7 +63,8 @@ $rules = [
     'no_trailing_whitespace_in_comment' => true,
     'no_trailing_whitespace' => true,
     'no_unneeded_control_parentheses' => true,
-    'no_unused_imports' => true,
+    'no_unreachable_default_argument_value' => true, // risky
+    'no_unused_imports' => false,
     'no_useless_else' => true,
     'no_useless_return' => true,
     'no_whitespace_before_comma_in_array' => true,
@@ -113,10 +114,7 @@ $rules = [
     'unary_operator_spaces' => true,
     'visibility_required' => ['property', 'method'],
     'whitespace_after_comma_in_array' => true,
-    // 'align_phpdoc' => true,
-    // 'concat_without_spaces' => true,
-    // 'hash_to_slash_comment' => true,
-    // 'no_unreachable_default_argument_value' => true, // risky
+    // 'hash_to_slash_comment' => true, // DEPRECATED using single_line_comment_style
     // 'strict_comparison' => true // risky
 ];
 
@@ -133,7 +131,9 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
     ->notName('*.blade.php')
     ->notName('.phpstorm.meta.php')
-    ->notName('_ide_*.php');
+    ->notName('_ide_*.php')
+    ->notName('index.php')
+    ->notName('server.php');
 
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)

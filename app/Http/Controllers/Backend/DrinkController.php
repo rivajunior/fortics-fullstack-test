@@ -42,7 +42,7 @@ class DrinkController extends Controller
         $drink->save();
 
         return view(route('admin.drinks.show', $drink->id), [
-            'soft_drink' => $drink
+            'soft_drink' => $drink,
         ]);
     }
 
@@ -67,7 +67,7 @@ class DrinkController extends Controller
     {
         return view('backend.drinks.edit', [
             'drink_types' => DrinkType::all(),
-            'soda' => Drink::find($id)
+            'soda' => Drink::find($id),
         ]);
     }
 

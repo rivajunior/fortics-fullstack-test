@@ -12,7 +12,7 @@ Route::resource('/drinks', 'DrinkController')->only([
     'update',
     'create',
     'store',
-    'destroy'
+    'destroy',
 ]);
 
 Route::delete('/destroy-multiples', [DrinkController::class, 'destroyMultiples'])

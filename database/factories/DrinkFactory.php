@@ -1,6 +1,6 @@
 <?php
 
-/* @var $factory \Illuminate\Database\Eloquent\Factory */
+// @var $factory \Illuminate\Database\Eloquent\Factory
 
 use App\Models\Drink;
 use Faker\Generator as Faker;
@@ -12,6 +12,6 @@ $factory->define(Drink::class, function (Faker $faker) {
         'flavor' => $faker->words(3, true),
         'mililiters' => $faker->numberBetween(0, 100000),
         'price' => $faker->randomFloat(2, 0, 99999),
-        'quantity' => $faker->numberBetween(0, 10000)
+        'quantity' => $faker->numberBetween(0, 10000),
     ];
 });

@@ -17,7 +17,7 @@ class Drink extends Model
         'price',
         'type',
         'mililiters',
-        'quantity'
+        'quantity',
     ];
 
     public function getPriceAttribute($value) : string

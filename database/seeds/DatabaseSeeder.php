@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AuthTableSeeder::class,
             DrinkTypeTableSeeder::class,
-            DrinkTableSeeder::class
+            DrinkTableSeeder::class,
         ]);
 
         Model::reguard();
