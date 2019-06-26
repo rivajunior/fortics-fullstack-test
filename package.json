@@ -34,6 +34,7 @@
         "jest": "^24.8.0",
         "jquery": "^3.4.1",
         "laravel-mix": "^4.0.16",
+        "laravel-mix-purgecss": "^4.1.0",
         "lint-staged": "^8.2.1",
         "perfect-scrollbar": "^1.4.0",
         "popper.js": "^1.15.0",

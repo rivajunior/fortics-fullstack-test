@@ -1,4 +1,8 @@
 const mix = require('laravel-mix')
+const glob = require('glob-all')
+const path = require('path')
+
+require('laravel-mix-purgecss')
 
 /*
  |--------------------------------------------------------------------------
@@ -28,14 +32,32 @@ mix.setPublicPath('public')
     .sourceMaps()
 
 if (mix.inProduction()) {
-    mix.version().options({
-        // optimize js minification process
-        terser: {
-            cache: true,
-            parallel: true,
-            sourceMap: true
-        }
-    })
+    mix.version()
+        .options({
+            // optimize js minification process
+            terser: {
+                cache: true,
+                parallel: true,
+                sourceMap: true
+            }
+        })
+        .purgeCss({
+            paths: () =>
+                glob.sync([
+                    path.join(__dirname, 'resources/views/**/*.blade.php'),
+                    path.join(__dirname, 'resources/js/**/*.js')
+                ]),
+            // Other options are passed through to Purgecss
+            whitelistPatterns: [
+                /animated/,
+                /^arrow$/,
+                /^modal-backdrop$/,
+                /^modal-open$/,
+                /^show$/,
+                /^collapsing$/
+            ],
+            whitelistPatternsChildren: [/tooltip/]
+        })
 } else {
     // Uses inline source-maps on development
     mix.webpackConfig({ devtool: 'inline-source-map' })
