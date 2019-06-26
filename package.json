@@ -1,0 +1,111 @@
+{
+    "private": true,
+    "license": "UNLICENSED",
+    "scripts": {
+        "dev": "yarn run development",
+        "development": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "yarn run development --watch",
+        "watch-poll": "yarn run watch --watch-poll",
+        "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "yarn run production",
+        "production": "cross-env NODE_ENV=production webpack --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "test": "cross-env NODE_ENV=test jest",
+        "tdd": "yarn run test --watch --notify"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^8.0.0",
+        "@commitlint/config-conventional": "^8.0.0",
+        "@coreui/coreui": "^2.1.12",
+        "@fortawesome/fontawesome-free": "^5.9.0",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-eslint": "^10.0.2",
+        "babel-jest": "^24.8.0",
+        "bootstrap": "^4.3.1",
+        "cross-env": "^5.2.0",
+        "eslint": "^6.0.1",
+        "eslint-config-prettier": "^6.0.0",
+        "eslint-config-standard": "^12.0.0",
+        "eslint-plugin-import": "^2.18.0",
+        "eslint-plugin-node": "^9.1.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.0",
+        "husky": "^2.5.0",
+        "jest": "^24.8.0",
+        "jquery": "^3.4.1",
+        "laravel-mix": "^4.0.16",
+        "lint-staged": "^8.2.1",
+        "perfect-scrollbar": "^1.4.0",
+        "popper.js": "^1.15.0",
+        "prettier": "^1.18.2",
+        "resolve-url-loader": "2.3.1",
+        "sass": "^1.22.0",
+        "sass-loader": "^7.1.0",
+        "stylelint": "^10.1.0",
+        "stylelint-config-twbs-bootstrap": "^0.3.1",
+        "sweetalert2": "^8.13.0",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "jest": {
+        "testURL": "http://localhost",
+        "roots": [
+            "<rootDir>/tests/Javascript/"
+        ],
+        "moduleNameMapper": {
+            "^@/(.*)$": "<rootDir>/resources/js/$1"
+        },
+        "moduleFileExtensions": [
+            "js"
+        ],
+        "transform": {
+            "^.+\\.js$": "babel-jest"
+        }
+    },
+    "engines": {
+        "node": ">=8.0.0"
+    },
+    "prettier": {
+        "semi": false,
+        "singleQuote": true,
+        "endOfLine": "lf"
+    },
+    "stylelint": {
+        "extends": [
+            "stylelint-config-twbs-bootstrap/scss"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+            "post-merge": "yarn install"
+        }
+    },
+    "lint-staged": {
+        "linters": {
+            "*.js": [
+                "eslint --fix",
+                "git add"
+            ],
+            "*.scss": [
+                "stylelint --fix",
+                "git add"
+            ]
+        },
+        "ignore": [
+            "**/public/"
+        ]
+    }
+}

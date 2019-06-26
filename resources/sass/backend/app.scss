@@ -1,0 +1,59 @@
+@import "../global";
+
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// Fix mobile footer
+.app-footer {
+    flex: 0 0;
+    padding-top: map-get($spacers, 3);
+    padding-bottom: map-get($spacers, 3);
+}
+
+.card-hover {
+    overflow: hidden;
+    border: 0;
+    box-shadow: $box-shadow-sm;
+    transition: $transition-base;
+
+    &:hover {
+        box-shadow: $box-shadow;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.card-checkbox {
+    &::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        content: "";
+        border: 1px solid #c8ced3;
+        border-top: 0;
+        border-right: 0;
+        border-radius: 0 1rem;
+        background-color: $white;
+        opacity: 0;
+        transition: $transition-base;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 1;
+        }
+    }
+}
+
+.card-checkbox-checked::before {
+    background-color: $primary;
+    opacity: 1;
+}
