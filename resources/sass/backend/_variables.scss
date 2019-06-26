@@ -1,7 +1,7 @@
 // Variable overrides
 
-$cyan: #17a2b8;
-$info: $cyan;
+$cyan: #17a2b8 !default;
+$info: $cyan !default;
 
 $card-border-radius: 1rem !default;
 $btn-border-radius: 1rem !default;
