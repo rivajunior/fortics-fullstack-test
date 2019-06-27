@@ -14,16 +14,18 @@ class CreateDrinksTable extends Migration
         Schema::create('drinks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('brand', 30);
-            $table->unsignedTinyInteger('type');
+            $table->unsignedTinyInteger('type_id');
             $table->string('flavor');
             $table->integer('mililiters');
             $table->decimal('price');
             $table->bigInteger('quantity')->default(0);
             $table->timestamps();
 
-            $table->foreign('type')
+            $table->foreign('type_id')
                 ->references('id')
                 ->on('drink_types');
+
+            $table->index(['brand', 'flavor', 'mililiters']);
         });
     }
 
