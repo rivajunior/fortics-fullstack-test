@@ -12,11 +12,18 @@ class DrinkController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('backend.drinks.index', ['soft_drinks' => Drink::paginate(10)]);
+        $drinks = Drink::with('type');
+
+        if ($request->has('search')) {
+            $drinks = Drink::search($request->search);
+        }
+
+        return view('backend.drinks.index', ['soft_drinks' => $drinks->paginate(10)]);
     }
 
     /**
@@ -66,7 +73,7 @@ class DrinkController extends Controller
     public function edit($id)
     {
         return view('backend.drinks.edit', [
-            'drink_types' => DrinkType::all(),
+            'drink_types' => DrinkType::with('type')->all(),
             'soda' => Drink::find($id),
         ]);
     }

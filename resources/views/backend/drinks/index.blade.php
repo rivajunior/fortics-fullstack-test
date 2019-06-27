@@ -3,6 +3,24 @@
 @section('title', "Refrigerantes".' | '.app_name())
 
 @section('content')
+
+    <form class="py-3">
+        <div class="input-group">
+            <input
+                class="form-control"
+                type="search"
+                placeholder="Pesquisar"
+                aria-label="Pesquisar"
+                name="search"
+            >
+            <div class="input-group-append">
+                <button type="submit" aria-label="Pesquisar" class="input-group-text">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
     <div class="text-right mb-4">
         <form
             action="{{ route('admin.drinks.destroy_multiples') }}"
@@ -38,7 +56,7 @@
                     <div class="card-body">
                         <ul class="list-unstyled">
                             <li class="py-2">
-                                <strong>Tipo:</strong> {{ $soda->type }}
+                                <strong>Tipo:</strong> {{ $soda->type->name }}
                             </li>
                             <li class="py-2">
                                 <strong>Sabor:</strong> {{ $soda->flavor }}
@@ -49,7 +67,7 @@
                         </ul>
                         <div class="text-center">
                             <div class="mb-1"><strong>Preço</strong></div>
-                            <div class="lead">{{  $soda->price }}</div>
+                            <div class="lead">{{ $soda->price }}</div>
                         </div>
                         <div class="text-right">
                             <a href="{{ route('admin.drinks.edit', $soda->id) }}">
