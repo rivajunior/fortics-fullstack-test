@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <ul class="list-unstyled">
                         <li class="py-2">
-                            <strong>Tipo:</strong> {{ $soda->type }}
+                            <strong>Tipo:</strong> {{ $soda->type->name }}
                         </li>
                         <li class="py-2">
                             <strong>Sabor:</strong> {{ $soda->flavor }}
