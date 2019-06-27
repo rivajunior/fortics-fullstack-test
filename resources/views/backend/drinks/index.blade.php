@@ -3,9 +3,8 @@
 @section('title', "Refrigerantes".' | '.app_name())
 
 @section('content')
-
     <form class="py-3">
-        <div class="input-group">
+        <div class="input-group shadow-sm">
             <input
                 class="form-control"
                 type="search"
